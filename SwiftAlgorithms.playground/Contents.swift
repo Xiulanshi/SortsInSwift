@@ -1,7 +1,7 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
-
+/*
 //BIG O NOTATION
 /*
 // Making Comparison
@@ -395,6 +395,24 @@ var numbers = [22, 59, 38, 93,95, 0, 34, 58, 72, 15]
 
 quickSort(&numbers)
 
+*/
+func partition(xs: [Int], pivot: Int) -> ([Int], [Int]) {
+    return (xs.filter{$0 < pivot}, xs.filter{$0 > pivot})
+}
+
+partition([1, 4, 2, 5], pivot: 3)
+
+func qsort(xs: [Int]) -> [Int] {
+    if (xs.isEmpty) {
+        return []
+    }
+    let pivot = xs[0]
+    let (ys, zs) = partition(xs, pivot: pivot)
+    return qsort(ys) + [pivot] + qsort(zs)
+}
+
+qsort([8, 6, 7, 5, 3, 0, 9])
+
 
 /*
 //SELECTION SORT ----In computer science, selection sort is a sorting algorithm, specifically an in-place comparison sort. It has O(n2) time complexity, making it inefficient on large lists, and generally performs worse than the similar insertion sort. Selection sort is noted for its simplicity, and it has performance advantages over more complicated algorithms in certain situations, particularly where auxiliary memory is limited.
@@ -408,7 +426,7 @@ Best case performance:	О(n^2)
 Average case performance:	О(n^2)
 Worst case space complexity: О(n) total, O(1) auxiliary
 */
-
+/*
 func select(xs: [Int], startingAt k: Int) -> Int {
     var minIndex = k
     for i in (k+1)..<xs.count {
@@ -433,4 +451,4 @@ func selection_sort(inout xs: [Int]) -> [Int] {
 
 var xs = [8, 6, 7, 5, 3, 0, 9]
 selection_sort(&xs)
-
+*/
